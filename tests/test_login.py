@@ -7,9 +7,8 @@ class TestLoginStellarburgers:
     def test_login_on_main_page(self, login):
         login.find_element(*Locators.AUTH_BUTTON).click()
         login.find_element(*Locators.PERS_ACC_INTO_BUTTON).click()
-        WebDriverWait(login, 5).until(EC.url_to_be('https://stellarburgers.nomoreparties.site/account/profile'))
-
-        assert login.current_url == 'https://stellarburgers.nomoreparties.site/account/profile'
+        WebDriverWait(login, 5).until(EC.url_to_be(Constants.PROFILE_URL))
+        assert login.current_url == Constants.PROFILE_URL
 
 
     def test_login_registration_link(self, login):
@@ -23,7 +22,7 @@ class TestLoginStellarburgers:
         login.find_element(*Locators.PERS_ACC_INTO_BUTTON).click()
         logout = WebDriverWait(login, 3).until(EC.visibility_of_element_located(Locators.PERS_ACC_LOGOUT_BUTTON))
         assert logout.is_displayed()
-        assert login.current_url == 'https://stellarburgers.nomoreparties.site/account/profile'
+        assert login.current_url == Constants.PROFILE_URL
 
 
     def test_login_recovery_link(self, login):
@@ -35,11 +34,10 @@ class TestLoginStellarburgers:
         login.find_element(*Locators.PASSWORD).send_keys(Constants.PASSWORD)
         login.find_element(*Locators.AUTH_BUTTON).click()
 
-
         login.find_element(*Locators.PERS_ACC_INTO_BUTTON).click()
         logout = WebDriverWait(login, 3).until(EC.visibility_of_element_located(Locators.PERS_ACC_LOGOUT_BUTTON))
         assert logout.is_displayed()
-        assert login.current_url == 'https://stellarburgers.nomoreparties.site/account/profile'
+        assert login.current_url == Constants.PROFILE_URL
 
 
 
@@ -54,5 +52,5 @@ class TestLoginStellarburgers:
         login.find_element(*Locators.PERS_ACC_INTO_BUTTON).click()
         logout = WebDriverWait(login, 3).until(EC.visibility_of_element_located(Locators.PERS_ACC_LOGOUT_BUTTON))
         assert logout.is_displayed()
-        assert login.current_url == 'https://stellarburgers.nomoreparties.site/account/profile'
+        assert login.current_url == Constants.PROFILE_URL
 

@@ -1,6 +1,7 @@
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from locators import Locators
+from constants import Constants
 
 class TestFromPersonalAccountIntoConstructor:
 
@@ -12,7 +13,7 @@ class TestFromPersonalAccountIntoConstructor:
         burger_section = WebDriverWait(login, 5).until(EC.element_to_be_clickable(Locators.CONSTRUCTOR_BURGER_SECTION))
         burger_section.is_displayed()
 
-        assert login.current_url == 'https://stellarburgers.nomoreparties.site/'
+        assert login.current_url == Constants.URL
 
     def test_from_constructor_into_logo(self, login):
         login.find_element(*Locators.AUTH_BUTTON).click()
@@ -22,4 +23,4 @@ class TestFromPersonalAccountIntoConstructor:
         burger_section = WebDriverWait(login, 5).until(EC.element_to_be_clickable(Locators.CONSTRUCTOR_BURGER_SECTION))
         burger_section.is_displayed()
 
-        assert login.current_url == 'https://stellarburgers.nomoreparties.site/'
+        assert login.current_url == Constants.URL
